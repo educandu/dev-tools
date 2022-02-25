@@ -3,8 +3,8 @@ import { EOL } from 'os';
 import url from 'url';
 import path from 'path';
 import inquirer from 'inquirer';
-import { MongoClient } from 'mongodb';
 import { MongoDBStorage, Umzug } from 'umzug';
+import { MongoClient, ServerApiVersion } from 'mongodb';
 
 export async function runInteractiveMigrations({ migrationsDirectory, migrationFileNamePattern, recursive = false }) {
   let mongoClient;
@@ -37,7 +37,7 @@ export async function runInteractiveMigrations({ migrationsDirectory, migrationF
       }
     ]);
 
-    mongoClient = await MongoClient.connect(connectionString, { useUnifiedTopology: true });
+    mongoClient = await MongoClient.connect(connectionString, { useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
     await Promise.all(migrationInfos.map(async info => {
       const Migration = (await import(url.pathToFileURL(info.filePath).href)).default;
