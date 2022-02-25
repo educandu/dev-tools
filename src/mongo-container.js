@@ -2,7 +2,10 @@ import { noop } from './helpers.js';
 import { DEFAULT_STARTUP_GRACE_PERIOD, DockerContainer } from './docker-container.js';
 
 const DEFAULT_MONGO_CONTAINER_NAME = 'mongo';
-const DEFAULT_MONGO_IMAGE = 'bitnami/mongodb:4.2.17-debian-10-r23';
+
+// Temporary solution due to ARM64 processor incompatibility
+// until Bitnami will support it: https://github.com/bitnami/charts/issues/7305
+const DEFAULT_MONGO_IMAGE = 'educandu/mongo:5.0.6-multiplatform.2';
 
 export class MongoContainer extends DockerContainer {
   constructor({
