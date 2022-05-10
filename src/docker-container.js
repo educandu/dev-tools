@@ -3,7 +3,7 @@ import { delay, isMac, noop } from './helpers.js';
 
 const docker = new Docker({ echo: false });
 
-export const DEFAULT_STARTUP_GRACE_PERIOD = isMac() ? 2500 : 1000;
+export const DEFAULT_STARTUP_GRACE_PERIOD = isMac() ? 3000 : 1000;
 
 export class DockerContainer {
   constructor({ name, image, portMappings = [], env = {}, netHost = false, cmd = [], onFirstRun = noop, startupGracePeriod = DEFAULT_STARTUP_GRACE_PERIOD }) {
