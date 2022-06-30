@@ -7,7 +7,7 @@ import {
   createReleaseNotesFromCurrentTag,
   ensureIsValidSemverTag,
   eslint,
-  jest
+  vitest
 } from './src/index.js';
 
 export async function clean() {
@@ -23,15 +23,11 @@ export function fix() {
 }
 
 export function test() {
-  return jest.coverage();
-}
-
-export function testChanged() {
-  return jest.changed();
+  return vitest.coverage();
 }
 
 export function testWatch() {
-  return jest.watch();
+  return vitest.watch();
 }
 
 export function verifySemverTag(done) {

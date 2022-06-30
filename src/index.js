@@ -1,6 +1,6 @@
-export { jest } from './jest.js';
 export { less } from './less.js';
 export { cliArgs } from './cli.js';
+export { vitest } from './vitest.js';
 export { eslint } from './eslint.js';
 export { esbuild } from './esbuild.js';
 export { Process } from './process.js';
