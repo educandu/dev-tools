@@ -33,6 +33,7 @@ export async function ensureMinioBucketExists({
   do {
 
     try {
+      error = null;
       bucketCreationAttempt += 1;
 
       const minioClient = new Client({ endPoint, port, useSSL, region, accessKey, secretKey });
