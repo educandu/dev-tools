@@ -1,7 +1,7 @@
-import path from 'path';
+import path from 'node:path';
 import { build } from 'esbuild';
 import { glob } from './helpers.js';
-import { promises as fs } from 'fs';
+import { promises as fs } from 'node:fs';
 
 function printSeparator(width) {
   // eslint-disable-next-line no-console

@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 
-import { EOL } from 'os';
 import axios from 'axios';
 import semver from 'semver';
-import { promisify } from 'util';
+import { EOL } from 'node:os';
 import ghreleases from 'ghreleases';
 import axiosRetry from 'axios-retry';
+import { promisify } from 'node:util';
 import { cleanEnv, str } from 'envalid';
 import gitSemverTags from 'git-semver-tags';
 import commitsBetween from 'commits-between';

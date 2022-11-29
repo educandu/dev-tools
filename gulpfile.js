@@ -1,5 +1,5 @@
-import del from 'del';
 import gulp from 'gulp';
+import { deleteAsync } from 'del';
 import {
   cliArgs,
   createGithubRelease,
@@ -11,7 +11,7 @@ import {
 } from './src/index.js';
 
 export async function clean() {
-  await del(['coverage']);
+  await deleteAsync(['coverage']);
 }
 
 export function lint() {

@@ -8,7 +8,6 @@ export default defineConfig({
   },
   test: {
     include: ['src/**/*.spec.js'],
-    globals: true,
     coverage: {
       reporter: ['text', 'json', 'html'],
       include: ['src/'],

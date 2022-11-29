@@ -1,8 +1,8 @@
-import { glob } from './helpers.js';
-import { EOL } from 'os';
-import url from 'url';
-import path from 'path';
+import url from 'node:url';
+import path from 'node:path';
+import { EOL } from 'node:os';
 import inquirer from 'inquirer';
+import { glob } from './helpers.js';
 import { MongoDBStorage, Umzug } from 'umzug';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 

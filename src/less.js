@@ -1,8 +1,8 @@
-import path from 'path';
 import Less from 'less';
 import fse from 'fs-extra';
+import path from 'node:path';
 import CleanCss from 'clean-css';
-import { promisify } from 'util';
+import { promisify } from 'node:util';
 import LessAutoprefix from 'less-plugin-autoprefix';
 
 async function compileLess({ inputFile, outputFile, optimize }) {
