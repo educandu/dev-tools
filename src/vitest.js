@@ -1,12 +1,12 @@
-import path from 'path';
+import path from 'node:path';
 import { execa } from 'execa';
-import { createRequire } from 'module';
+import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 const resolvedVitestPackage = require.resolve('vitest/package.json');
 const index = resolvedVitestPackage.replaceAll('\\', '/').lastIndexOf('/node_modules/vitest/');
 const rootDir = resolvedVitestPackage.substring(0, index);
-const vitestCliModule = path.resolve(rootDir, './node_modules/vitest/dist/cli.mjs');
+const vitestCliModule = path.resolve(rootDir, './node_modules/vitest/vitest.mjs');
 
 function runVitest(command, ...args) {
   return execa(process.execPath, [vitestCliModule, command, ...args], { stdio: 'inherit' });

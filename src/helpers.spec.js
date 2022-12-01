@@ -1,4 +1,5 @@
 import { kebabToCamel } from './helpers.js';
+import { describe, expect, it } from 'vitest';
 
 describe('helpers', () => {
   describe('kebabToCamel', () => {

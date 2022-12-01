@@ -1,6 +1,6 @@
-import path from 'path';
 import yaml from 'yaml';
 import fse from 'fs-extra';
+import path from 'node:path';
 import { glob, kebabToCamel } from './helpers.js';
 
 export async function buildTranslationsJson({ pattern, outputFile, createNamespace = filePath => kebabToCamel(path.basename(filePath, '.yml')) }) {

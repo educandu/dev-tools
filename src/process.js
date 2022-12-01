@@ -1,5 +1,5 @@
 import { delay } from './helpers.js';
-import { spawn } from 'child_process';
+import { spawn } from 'node:child_process';
 
 export const DEFAULT_ENV = { ...process.env };
 export const DEFAULT_STDIO = 'inherit';
