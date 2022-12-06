@@ -4,7 +4,7 @@
   "description": "Development tools for educandu based systems",
   "type": "module",
   "engines": {
-    "node": "^18.0.0"
+    "node": "^18.12.1"
   },
   "main": "./src/index.js",
   "exports": "./src/index.js",
