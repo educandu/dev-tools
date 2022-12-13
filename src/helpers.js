@@ -40,7 +40,7 @@ export async function writeZipFile(fileName, fileMap) {
   await fse.writeFile(fileName, await archive.generateAsync({ type: 'nodebuffer' }));
 }
 
-export async function downloadJson(url, fileName, { format } = { output: 'json' }) {
+export async function downloadJson(url, fileName, { format } = { format: 'json' }) {
   const res = await axios.get(url, { responseType: 'json' });
   let output;
   switch (format) {
