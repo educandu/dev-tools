@@ -5,6 +5,7 @@ import fse from 'fs-extra';
 import path from 'node:path';
 import globModule from 'glob';
 import { promisify } from 'node:util';
+import jsonToEsModule from 'json-to-es-module';
 
 export function delay(ms) {
   return new Promise(resolve => {
@@ -39,7 +40,19 @@ export async function writeZipFile(fileName, fileMap) {
   await fse.writeFile(fileName, await archive.generateAsync({ type: 'nodebuffer' }));
 }
 
-export async function downloadJson(url, fileName) {
+export async function downloadJson(url, fileName, { format } = { output: 'json' }) {
   const res = await axios.get(url, { responseType: 'json' });
-  await fse.writeFile(fileName, JSON.stringify(res.data, null, 2), 'utf8');
+  let output;
+  switch (format) {
+    case 'json':
+      output = JSON.stringify(res.data, null, 2);
+      break;
+    case 'esm':
+      output = jsonToEsModule(JSON.stringify(res.data)).replace(/\t/g, '  ');
+      break;
+    default:
+      throw new Error(`Invalid format value: '${format}'`);
+  }
+
+  await fse.writeFile(fileName, `${output.trimEnd()}${os.EOL}`, 'utf8');
 }
