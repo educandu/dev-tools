@@ -54,5 +54,5 @@ export async function downloadJson(url, fileName, { format } = { format: 'json' 
       throw new Error(`Invalid format value: '${format}'`);
   }
 
-  await fse.writeFile(fileName, `${output.trimEnd()}${os.EOL}`, 'utf8');
+  await fse.writeFile(fileName, `${output.replace(/\r/g, '').replace(/\n/g, os.EOL).trim()}${os.EOL}`, 'utf8');
 }
