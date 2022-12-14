@@ -1,5 +1,3 @@
-/* eslint-disable no-await-in-loop, no-console */
-
 import { Client } from 'minio';
 import { delay } from './helpers.js';
 

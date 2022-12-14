@@ -55,7 +55,6 @@ export class LoadBalancedNodeProcessGroup {
       ? ` #${index} `
       : ' LB ';
 
-    // eslint-disable-next-line no-console
     console.log(`${colorize(prefix)} ${message}`);
   }
 

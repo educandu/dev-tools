@@ -12,7 +12,6 @@ async function runEslint(patterns, { fix, failOnError }) {
   const resultText = formatter.format(results);
 
   if (resultText) {
-    // eslint-disable-next-line no-console
     console.log(resultText);
   }
 

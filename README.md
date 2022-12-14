@@ -1,9 +1,15 @@
 # dev-tools
 
-[![codecov](https://codecov.io/gh/educandu/dev-tools/branch/main/graph/badge.svg?token=SM7ANNBT3A)](https://codecov.io/gh/educandu/dev-tools)
-
+[![codecov](https://codecov.io/gh/educandu/dev-tools/branch/main/graph/badge.svg)](https://codecov.io/gh/educandu/dev-tools)
 
 Development tools for educandu based systems
+
+## Prerequisites
+
+* node.js ^18.0.0
+* optional: globally installed gulp: `npm i -g gulp-cli`
+
+The output of this repository is an npm package (`@educandu/dev-tools`).
 
 ## Usage
 

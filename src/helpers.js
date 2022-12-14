@@ -30,7 +30,6 @@ export async function writeZipFile(fileName, fileMap) {
   const archive = new JSZip();
 
   for (const [key, value] of Object.entries(fileMap)) {
-    // eslint-disable-next-line no-await-in-loop
     archive.file(key, await fse.readFile(value));
   }
 
