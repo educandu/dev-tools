@@ -45,13 +45,12 @@
     "yargs": "^17.6.2"
   },
   "devDependencies": {
-    "@educandu/eslint-config": "^1.0.2",
-    "@vitest/coverage-c8": "^0.25.8",
+    "@educandu/eslint-config": "^2.0.0",
+    "@vitest/coverage-c8": "^0.26.0",
     "del": "^7.0.0",
-    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
     "gulp": "^4.0.2",
-    "vitest": "^0.25.8"
+    "vitest": "^0.26.0"
   }
 }
