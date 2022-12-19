@@ -6,6 +6,7 @@ import { promisify } from 'node:util';
 import LessAutoprefix from 'less-plugin-autoprefix';
 
 async function compileLess({ inputFile, outputFile, optimize }) {
+  const outputDir = path.dirname(outputFile);
   const sourceMapOutputFile = `${outputFile}.map`;
   const relativeSourceMapUrl = path.basename(sourceMapOutputFile);
 
@@ -31,6 +32,9 @@ async function compileLess({ inputFile, outputFile, optimize }) {
       map: lessOutput.map.toString()
     };
   }
+
+  // Less will fail if the output dir does not exist:
+  await fse.mkdirp(outputDir);
 
   await Promise.all([
     fse.writeFile(outputFile, finalResult.css, 'utf8'),
