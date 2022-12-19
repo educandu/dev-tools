@@ -4,12 +4,10 @@ import { glob } from './helpers.js';
 import { promises as fs } from 'node:fs';
 
 function printSeparator(width) {
-  // eslint-disable-next-line no-console
   console.log('-'.repeat(width));
 }
 
 function printWithSpaceInbetween([leftCol, rightCol], width) {
-  // eslint-disable-next-line no-console
   console.log(`${leftCol}${' '.repeat(width - leftCol.length - rightCol.length)}${rightCol}`);
 }
 

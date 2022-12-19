@@ -14,21 +14,23 @@ export async function clean() {
   await deleteAsync(['coverage']);
 }
 
-export function lint() {
-  return eslint.lint(['*.js', 'src/**/*.js'], { failOnError: true });
+export async function lint() {
+  await eslint.lint('**/*.js', { failOnError: true });
 }
 
-export function fix() {
-  return eslint.fix(['*.js', 'src/**/*.js']);
+export async function fix() {
+  await eslint.fix('**/*.js');
 }
 
-export function test() {
-  return vitest.coverage();
+export async function test() {
+  await vitest.coverage();
 }
 
-export function testWatch() {
-  return vitest.watch();
+export async function testWatch() {
+  await vitest.watch();
 }
+
+export const build = done => done();
 
 export function verifySemverTag(done) {
   ensureIsValidSemverTag(cliArgs.tag);
@@ -44,7 +46,8 @@ export async function release() {
   await createGithubRelease({
     githubToken: cliArgs.githubToken,
     currentTag,
-    releaseNotes
+    releaseNotes,
+    files: []
   });
 
   await createLabelInJiraIssues({
@@ -56,8 +59,6 @@ export async function release() {
   });
 }
 
-export const verify = gulp.series(lint, test);
-
-export const build = gulp.series(clean);
+export const verify = gulp.series(lint, test, build);
 
 export default verify;

@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 import axios from 'axios';
 import semver from 'semver';
 import { EOL } from 'node:os';
@@ -86,7 +84,6 @@ export async function createGithubRelease({ githubToken, currentTag, releaseNote
 
   console.log(`Creating Github release ${currentTag}`);
   const release = await promisify(ghreleases.create)(githubAuth, githubOrgaName, githubRepoName, {
-    // eslint-disable-next-line camelcase
     tag_name: currentTag,
     name: currentTag,
     body: releaseNotes,
@@ -108,7 +105,6 @@ export async function createLabelInJiraIssues({ jiraBaseUrl, jiraUser, jiraApiKe
   for (const issueKey of jiraIssueKeys) {
     console.log(`Setting label ${label} on JIRA issue ${issueKey}`);
     try {
-      // eslint-disable-next-line no-await-in-loop
       await client.put(
         `/rest/api/3/issue/${encodeURIComponent(issueKey)}`,
         { update: { labels: [{ add: label }] } },
@@ -121,7 +117,6 @@ export async function createLabelInJiraIssues({ jiraBaseUrl, jiraUser, jiraApiKe
 
   if (errors.length) {
     const message = `${errors.length} ${errors.length === 1 ? 'error' : 'errors'} while trying to create JIRA labels`;
-    // eslint-disable-next-line no-undef
     throw new AggregateError(errors, message);
   }
 }

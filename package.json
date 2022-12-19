@@ -3,16 +3,13 @@
   "version": "0.0.0",
   "description": "Development tools for educandu based systems",
   "type": "module",
-  "engines": {
-    "node": "^18.12.1"
-  },
-  "main": "./src/index.js",
   "exports": "./src/index.js",
-  "scripts": {
-    "start": "gulp",
-    "test": "gulp test"
+  "engines": {
+    "node": "^18.0.0"
   },
-  "keywords": [],
+  "keywords": [
+    "educandu"
+  ],
   "license": "MIT",
   "author": "Educandu Team <team@educandu.dev>",
   "homepage": "https://github.com/educandu/dev-tools",
@@ -22,18 +19,17 @@
   },
   "dependencies": {
     "@rauschma/stringio": "^1.4.0",
-    "axios": "^1.2.0",
+    "axios": "^1.2.1",
     "axios-retry": "^3.3.1",
-    "c8": "^7.12.0",
-    "chalk": "^5.1.2",
+    "chalk": "^5.2.0",
     "clean-css": "^5.3.1",
     "commits-between": "^0.2.0",
-    "docker-cli-js": "^2.9.0",
+    "docker-cli-js": "^2.10.0",
     "envalid": "^7.3.1",
-    "esbuild": "^0.15.16",
-    "eslint": "^8.28.0",
+    "esbuild": "^0.16.9",
+    "eslint": "^8.30.0",
     "execa": "^6.1.0",
-    "fs-extra": "^11.0.0",
+    "fs-extra": "^11.1.0",
     "ghreleases": "^3.0.2",
     "git-semver-tags": "^4.1.1",
     "http-proxy": "^1.18.1",
@@ -49,9 +45,12 @@
     "yargs": "^17.6.2"
   },
   "devDependencies": {
+    "@educandu/eslint-config": "^1.0.2",
     "@vitest/coverage-c8": "^0.25.8",
     "del": "^7.0.0",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "gulp": "^4.0.2",
     "vitest": "^0.25.8"
   }

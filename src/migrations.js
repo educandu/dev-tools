@@ -52,7 +52,6 @@ export async function runInteractiveMigrations({ migrationsDirectory, migrationF
       logger: console
     });
 
-    // eslint-disable-next-line no-console
     umzug.on('migrated', ({ name }) => console.log(`Finished migrating ${name}`));
 
     const executedMigrationNames = (await umzug.executed()).map(migration => migration.name);
@@ -88,12 +87,10 @@ export async function runInteractiveMigrations({ migrationsDirectory, migrationF
     ]);
 
     if (!isConfirmed) {
-      // eslint-disable-next-line no-console
       console.log('No migration will be run, quitting');
       return;
     }
 
-    // eslint-disable-next-line no-console
     console.log(`Running ${migrationsToRun.length} ${migrationsToRun.length === 1 ? 'migration' : 'migrations'}`);
     await umzug.up({ migrations: migrationsToRun, rerun: 'ALLOW' });
   } finally {
