@@ -46,11 +46,11 @@
   },
   "devDependencies": {
     "@educandu/eslint-config": "^2.0.0",
-    "@vitest/coverage-c8": "^0.26.0",
+    "@vitest/coverage-c8": "^0.25.8",
     "del": "^7.0.0",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
     "gulp": "^4.0.2",
-    "vitest": "^0.26.0"
+    "vitest": "^0.25.8"
   }
 }
