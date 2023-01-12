@@ -84,6 +84,7 @@ export async function createGithubRelease({ githubToken, currentTag, releaseNote
 
   console.log(`Creating Github release ${currentTag}`);
   const release = await promisify(ghreleases.create)(githubAuth, githubOrgaName, githubRepoName, {
+    // eslint-disable-next-line camelcase
     tag_name: currentTag,
     name: currentTag,
     body: releaseNotes,
