@@ -26,7 +26,7 @@
     "commits-between": "^0.2.0",
     "docker-cli-js": "^2.10.0",
     "envalid": "^7.3.1",
-    "esbuild": "^0.17.2",
+    "esbuild": "^0.16.9",
     "eslint": "^8.30.0",
     "execa": "^6.1.0",
     "fs-extra": "^11.1.0",
