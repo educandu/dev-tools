@@ -1,6 +1,6 @@
 import path from 'node:path';
-import { build } from 'esbuild';
 import { glob } from './helpers.js';
+import esbuildModule from 'esbuild';
 import { promises as fs } from 'node:fs';
 
 function printSeparator(width) {
@@ -38,7 +38,7 @@ export const esbuild = {
     const inputPattern = path.join(inputDir, './**/*.{js,jsx}');
     const files = await glob(inputPattern, { ignore });
     await Promise.all(files.map(file => {
-      return build({
+      return esbuildModule.build({
         entryPoints: [file],
         target: ['esnext'],
         format: 'esm',
@@ -51,13 +51,12 @@ export const esbuild = {
     }));
   },
   async bundle({ entryPoints, outdir, minify = false, incremental = false, inject = [], metaFilePath = null, ...rest }) {
-    const bundler = await build({
+    const options = {
       entryPoints,
       target: ['esnext', 'chrome95', 'firefox93', 'safari13', 'edge95'],
       format: 'esm',
       bundle: true,
       splitting: true,
-      incremental: !!incremental,
       minify: !!minify,
       loader: { '.js': 'jsx' },
       inject,
@@ -66,13 +65,21 @@ export const esbuild = {
       sourcesContent: true,
       outdir,
       ...rest
-    });
+    };
+
+    const context = await esbuildModule.context(options);
+    const buildResult = await context.rebuild();
 
     if (metaFilePath) {
-      printMetafileTable(bundler.metafile);
-      await fs.writeFile(metaFilePath, JSON.stringify(bundler.metafile, null, 2), 'utf8');
+      printMetafileTable(buildResult.metafile);
+      await fs.writeFile(metaFilePath, JSON.stringify(buildResult.metafile, null, 2), 'utf8');
     }
 
-    return bundler;
+    if (incremental) {
+      return context;
+    }
+
+    await context.dispose();
+    return null;
   }
 };
