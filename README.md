@@ -77,7 +77,8 @@ await esbuild.transpileDir({
   ignore: '**/*.spec.js'
 });
 
-const bundler = await esbuild.bundle({
+// Note: `context` is only defined if `incremental` is set to `true`!
+const context = await esbuild.bundle({
   entryPoints: ['./src/main.js'],
   outdir: './dist/dist',
   minify: true,
@@ -86,7 +87,8 @@ const bundler = await esbuild.bundle({
   metaFilePath: './reports/meta.json'
 });
 
-await bundler.rebuild();
+await context.rebuild();
+await context.dispose();
 
 await eslint.lint(['src/**/*.js'], { failOnError: true });
 
