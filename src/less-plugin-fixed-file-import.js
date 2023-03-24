@@ -10,7 +10,6 @@ class CustomFileManager extends Less.FileManager {
     let result;
     if (!filename.startsWith('.')) {
       try {
-        console.log('HA', filename);
         const resolvedFilename = require.resolve(filename);
         if (fse.existsSync(resolvedFilename)) {
           const readFileArgs = [resolvedFilename];
