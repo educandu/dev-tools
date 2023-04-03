@@ -3,9 +3,9 @@ import { DEFAULT_STARTUP_GRACE_PERIOD, DockerContainer } from './docker-containe
 
 const DEFAULT_MONGO_CONTAINER_NAME = 'mongo';
 
-// Temporary solution due to ARM64 processor incompatibility
-// until Bitnami will support it: https://github.com/bitnami/charts/issues/7305
-const DEFAULT_MONGO_IMAGE = 'educandu/mongo:5.0.6-multiplatform.2';
+// Temporary/semi-permanent solution due to ARM64 processor incompatibility until Bitnami might support it one day.
+// See also: https://github.com/bitnami/charts/issues/7305#issuecomment-1443187343
+const DEFAULT_MONGO_IMAGE = 'educandu/mongo:6.0.5';
 
 export class MongoContainer extends DockerContainer {
   constructor({
