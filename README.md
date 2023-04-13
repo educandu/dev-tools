@@ -181,10 +181,6 @@ await runInteractiveMigrations({
 
 ~~~
 
-## License
-
-Educandu is released under the MIT License. See the bundled LICENSE file for details.
-
 ---
 
 ## OER learning platform for music
