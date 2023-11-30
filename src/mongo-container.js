@@ -5,7 +5,7 @@ const DEFAULT_MONGO_CONTAINER_NAME = 'mongo';
 
 // Temporary/semi-permanent solution due to ARM64 processor incompatibility until Bitnami might support it one day.
 // See also: https://github.com/bitnami/charts/issues/7305#issuecomment-1443187343
-const DEFAULT_MONGO_IMAGE = 'educandu/mongo:6.0.5';
+const DEFAULT_MONGO_IMAGE = 'educandu/mongo:7.0.3';
 
 export class MongoContainer extends DockerContainer {
   constructor({
