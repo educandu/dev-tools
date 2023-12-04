@@ -24,7 +24,7 @@ export async function createReleaseNotesFromCurrentTag({ jiraBaseUrl = null, jir
     ? `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}`
     : null;
 
-  const [currentTag, previousTag] = await promisify(gitSemverTags)();
+  const [currentTag, previousTag] = await gitSemverTags();
 
   const commits = previousTag
     ? await commitsBetween({ from: previousTag, to: currentTag })
