@@ -2,7 +2,7 @@
 
 [![codecov](https://codecov.io/gh/educandu/dev-tools/branch/main/graph/badge.svg)](https://codecov.io/gh/educandu/dev-tools)
 
-Development tools for educandu based systems
+Development tools for educandu based systems and ESLint configuration shared between educandu projects.
 
 ## Prerequisites
 
