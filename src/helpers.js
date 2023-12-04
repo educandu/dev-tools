@@ -2,18 +2,15 @@ import yaml from 'yaml';
 import os from 'node:os';
 import JSZip from 'jszip';
 import fse from 'fs-extra';
+import { glob } from 'glob';
 import path from 'node:path';
-import globModule from 'glob';
 import extend from 'just-extend';
-import { promisify } from 'node:util';
 
 export function delay(ms) {
   return new Promise(resolve => {
     setTimeout(resolve, ms);
   });
 }
-
-export const glob = promisify(globModule);
 
 export function isMac() {
   return os.platform() === 'darwin';

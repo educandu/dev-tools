@@ -1,5 +1,5 @@
+import { glob } from 'glob';
 import path from 'node:path';
-import { glob } from './helpers.js';
 import esbuildModule from 'esbuild';
 import { promises as fs } from 'node:fs';
 

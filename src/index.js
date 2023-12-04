@@ -15,5 +15,5 @@ export { runInteractiveMigrations } from './migrations.js';
 export { ensureMinioBucketExists } from './minio-helper.js';
 export { TunnelProxyContainer } from './tunnel-proxy-container.js';
 export { LoadBalancedNodeProcessGroup } from './load-balanced-node-process-group.js';
-export { delay, glob, isMac, mergeYamlFilesToJson, noop, writeZipFile } from './helpers.js';
+export { delay, isMac, mergeYamlFilesToJson, noop, writeZipFile } from './helpers.js';
 export { ensureIsValidSemverTag, createReleaseNotesFromCurrentTag, createGithubRelease, createLabelInJiraIssues } from './release.js';
