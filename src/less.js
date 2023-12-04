@@ -3,6 +3,7 @@ import fse from 'fs-extra';
 import path from 'node:path';
 import CleanCss from 'clean-css';
 import { promisify } from 'node:util';
+import lessPluginGlob from 'less-plugin-glob';
 import LessPluginAutoprefix from 'less-plugin-autoprefix';
 import LessPluginFixedFileImport from './less-plugin-fixed-file-import.js';
 
@@ -15,7 +16,11 @@ async function compileLess({ inputFile, outputFile, optimize }) {
   const lessOutput = await Less.render(lessInput, {
     filename: inputFile,
     javascriptEnabled: true,
-    plugins: [new LessPluginFixedFileImport(), new LessPluginAutoprefix({ browsers: ['last 2 versions', 'Safari >= 13'] })],
+    plugins: [
+      lessPluginGlob,
+      new LessPluginFixedFileImport(),
+      new LessPluginAutoprefix({ browsers: ['last 2 versions', 'Safari >= 13'] })
+    ],
     sourceMap: { sourceMapBasepath: process.cwd(), sourceMapURL: relativeSourceMapUrl, outputSourceFiles: true }
   });
 

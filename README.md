@@ -11,13 +11,33 @@ Development tools for educandu based systems and ESLint configuration shared bet
 
 The output of this repository is an npm package (`@educandu/dev-tools`).
 
-## Usage
+## Installation
 
 ~~~
 $ yarn add @educandu/dev-tools --dev
+$ yarn add eslint eslint-plugin-import eslint-plugin-react eslint-plugin-react-hooks vitest @vitest/coverage-v8 --dev
 ~~~
 
-Use it in code as follows:
+## Usage of eslint configuration
+
+Create a file `.eslint-config.cjs` containing:
+
+~~~
+module.exports = require('@educandu/dev-tools/eslint-config');
+~~~
+
+Extend this file in your local `.eslintrc.js`, for example:
+
+~~~
+module.exports = {
+  extends: ['./.eslint-config.cjs'],
+  overrides: [...]
+};
+~~~
+
+## Usage of development tools
+
+Use the dev tools in code as follows:
 
 ~~~
 import {
@@ -178,7 +198,6 @@ await runInteractiveMigrations({
   migrationsDirectory: 'migrations',
   migrationFileNamePattern: /^\d{4}-\d{2}-\d{2}-.*(?<!\.spec)(?<!\.specs)(?<!\.test)\.js$/
 });
-
 ~~~
 
 ---
