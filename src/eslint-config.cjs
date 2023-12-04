@@ -77,6 +77,7 @@ module.exports = {
     'prefer-destructuring': ['off'],
     'prefer-named-capture-group': ['off'],
     'require-jsdoc': ['off'],
+    'semi': ['error', 'always'],
     'sort-imports': ['off'],
     'sort-keys': ['off'],
     'space-before-function-paren': ['error', { anonymous: 'always', named: 'never', asyncArrow: 'always' }],
