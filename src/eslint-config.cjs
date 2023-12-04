@@ -87,7 +87,7 @@ module.exports = {
     'wrap-iife': ['error', 'inside'],
     'import/extensions': ['error', 'ignorePackages'],
     'import/no-named-as-default-member': ['off'],
-    'import/no-unresolved': ['error', { ignore: ['^vitest/config$'] }],
+    'import/no-unresolved': ['error', { ignore: ['^vitest/config$', '^@educandu/dev-tools$'] }],
     'react/destructuring-assignment': ['off'],
     'react/forbid-component-props': ['off'],
     'react/forbid-prop-types': ['off'],

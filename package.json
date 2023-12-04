@@ -4,8 +4,8 @@
   "description": "Development tools for educandu based systems",
   "type": "module",
   "exports": {
-    "./eslint": "./src/eslint-config.cjs",
-    ".": "./src/index.js"
+    ".": "./src/index.js",
+    "./eslint-config": "./src/eslint-config.cjs"
   },
   "engines": {
     "node": "^18.0.0"
