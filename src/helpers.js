@@ -29,6 +29,13 @@ export async function writeZipFile(fileName, fileMap) {
   await fse.writeFile(fileName, await archive.generateAsync({ type: 'nodebuffer' }));
 }
 
+function sortObjectKeys(obj) {
+  return Object.keys(obj).sort().reduce((result, key) => {
+    result[key] = obj[key];
+    return result;
+  }, {});
+}
+
 export async function mergeYamlFilesToJson({ inputFilesPattern, outputFile }) {
   const filePaths = await glob(inputFilesPattern);
   const translations = await Promise.all(filePaths.map(async filePath => {
@@ -37,6 +44,7 @@ export async function mergeYamlFilesToJson({ inputFilesPattern, outputFile }) {
   }));
 
   const mergedTranslations = extend({}, ...translations);
+  const sortedTranslations = sortObjectKeys(mergedTranslations);
 
-  await fse.writeJson(outputFile, mergedTranslations, { spaces: 2 });
+  await fse.writeJson(outputFile, sortedTranslations, { spaces: 2 });
 }
