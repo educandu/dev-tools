@@ -3,7 +3,7 @@ import { ensureMinioBucketExists } from './minio-helper.js';
 import { DEFAULT_STARTUP_GRACE_PERIOD, DockerContainer } from './docker-container.js';
 
 const DEFAULT_MINIO_CONTAINER_NAME = 'minio';
-const DEFAULT_MINIO_IMAGE = 'bitnami/minio:2020.12.18';
+const DEFAULT_MINIO_IMAGE = 'bitnami/minio:2023.12.6';
 
 export class MinioContainer extends DockerContainer {
   constructor({
@@ -26,12 +26,10 @@ export class MinioContainer extends DockerContainer {
       name,
       image,
       startupGracePeriod,
-      portMappings: [`${port}:9000`],
+      portMappings: [`${port}:9000`, '9001:9001'],
       env: {
-        MINIO_ACCESS_KEY: accessKey,
-        MINIO_SECRET_KEY: secretKey,
-        MINIO_DOMAIN: endPoint,
-        MINIO_BROWSER: 'on',
+        MINIO_ROOT_USER: accessKey,
+        MINIO_ROOT_PASSWORD: secretKey,
         ...env
       },
       netHost,
