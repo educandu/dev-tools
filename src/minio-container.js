@@ -11,6 +11,7 @@ export class MinioContainer extends DockerContainer {
     secretKey,
     endPoint = 'localhost',
     port = 9000,
+    frontendPort = 9001,
     useSSL = false,
     region = 'eu-central-1',
     initialBuckets = [],
@@ -26,7 +27,7 @@ export class MinioContainer extends DockerContainer {
       name,
       image,
       startupGracePeriod,
-      portMappings: [`${port}:9000`, '9001:9001'],
+      portMappings: [`${port}:9000`, `${frontendPort}:9001`],
       env: {
         MINIO_ROOT_USER: accessKey,
         MINIO_ROOT_PASSWORD: secretKey,
