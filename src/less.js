@@ -17,8 +17,8 @@ async function compileLess({ inputFile, outputFile, optimize }) {
     filename: inputFile,
     javascriptEnabled: true,
     plugins: [
-      lessPluginGlob,
       new LessPluginFixedFileImport(),
+      lessPluginGlob,
       new LessPluginAutoprefix({ browsers: ['last 2 versions', 'Safari >= 13'] })
     ],
     sourceMap: { sourceMapBasepath: process.cwd(), sourceMapURL: relativeSourceMapUrl, outputSourceFiles: true }
