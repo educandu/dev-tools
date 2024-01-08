@@ -1,8 +1,8 @@
 import url from 'node:url';
-import { glob } from 'glob';
 import path from 'node:path';
 import { EOL } from 'node:os';
 import inquirer from 'inquirer';
+import { normalizedGlob } from './helpers.js';
 import { MongoDBStorage, Umzug } from 'umzug';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
@@ -10,7 +10,7 @@ export async function runInteractiveMigrations({ migrationsDirectory, migrationF
   let mongoClient;
 
   try {
-    const migrationFiles = await glob(path.join(migrationsDirectory, recursive ? './**/*.js' : './*.js'));
+    const migrationFiles = await normalizedGlob(path.join(migrationsDirectory, recursive ? './**/*.js' : './*.js'));
     const migrationInfos = migrationFiles
       .filter(fileName => migrationFileNamePattern.test(path.basename(fileName)))
       .sort()

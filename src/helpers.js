@@ -5,6 +5,11 @@ import fse from 'fs-extra';
 import { glob } from 'glob';
 import path from 'node:path';
 import extend from 'just-extend';
+import normalizePath from 'normalize-path';
+
+export function normalizedGlob(pattern, ...args) {
+  return glob(normalizePath(pattern), ...args);
+}
 
 export function delay(ms) {
   return new Promise(resolve => {
@@ -37,7 +42,7 @@ function sortObjectKeys(obj) {
 }
 
 export async function mergeYamlFilesToJson({ inputFilesPattern, outputFile }) {
-  const filePaths = await glob(inputFilesPattern);
+  const filePaths = await normalizedGlob(inputFilesPattern);
   const translations = await Promise.all(filePaths.map(async filePath => {
     const fileContent = await fse.readFile(filePath, 'utf8');
     return yaml.parse(fileContent);

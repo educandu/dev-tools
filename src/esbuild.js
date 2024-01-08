@@ -1,7 +1,7 @@
-import { glob } from 'glob';
 import path from 'node:path';
 import esbuildModule from 'esbuild';
 import { promises as fs } from 'node:fs';
+import { normalizedGlob } from './helpers.js';
 
 function printSeparator(width) {
   console.log('-'.repeat(width));
@@ -36,7 +36,7 @@ function printMetafileTable(metafile) {
 export const esbuild = {
   async transpileDir({ inputDir, outputDir, ignore = [], ...rest }) {
     const inputPattern = path.join(inputDir, './**/*.{js,jsx}');
-    const files = await glob(inputPattern, { ignore });
+    const files = await normalizedGlob(inputPattern, { ignore });
     await Promise.all(files.map(file => {
       return esbuildModule.build({
         entryPoints: [file],
