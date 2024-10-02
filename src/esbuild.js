@@ -50,7 +50,7 @@ export const esbuild = {
       });
     }));
   },
-  async bundle({ entryPoints, outdir, minify = false, incremental = false, inject = [], metaFilePath = null, ...rest }) {
+  async bundle({ entryPoints, outdir, environment = process.env.NODE_ENV, minify = false, incremental = false, inject = [], metaFilePath = null, ...rest }) {
     const options = {
       entryPoints,
       target: ['esnext', 'chrome95', 'firefox93', 'safari13', 'edge95'],
@@ -64,6 +64,7 @@ export const esbuild = {
       sourcemap: true,
       sourcesContent: true,
       outdir,
+      define: { 'process.env.NODE_ENV': JSON.stringify(environment), ...rest.define },
       ...rest
     };
 
