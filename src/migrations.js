@@ -37,7 +37,7 @@ export async function runInteractiveMigrations({ migrationsDirectory, migrationF
       }
     ]);
 
-    mongoClient = await MongoClient.connect(connectionString, { useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+    mongoClient = await MongoClient.connect(connectionString, { serverApi: ServerApiVersion.v1 });
 
     await Promise.all(migrationInfos.map(async info => {
       const Migration = (await import(url.pathToFileURL(info.filePath).href)).default;
