@@ -8,7 +8,7 @@
     "./eslint-config": "./src/eslint-config.cjs"
   },
   "engines": {
-    "node": "^18.0.0"
+    "node": "^20.0.0"
   },
   "keywords": [
     "educandu"
