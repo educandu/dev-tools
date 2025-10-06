@@ -2,7 +2,7 @@ import { noop } from './helpers.js';
 import { DEFAULT_STARTUP_GRACE_PERIOD, DockerContainer } from './docker-container.js';
 
 const DEFAULT_MAILDEV_CONTAINER_NAME = 'maildev';
-const DEFAULT_MAILDEV_IMAGE = 'maildev/maildev:2.1.0';
+const DEFAULT_MAILDEV_IMAGE = 'educandu/maildev:2.1.0';
 
 export class MaildevContainer extends DockerContainer {
   constructor({
