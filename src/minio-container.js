@@ -3,7 +3,7 @@ import { ensureMinioBucketExists } from './minio-helper.js';
 import { DEFAULT_STARTUP_GRACE_PERIOD, DockerContainer } from './docker-container.js';
 
 const DEFAULT_MINIO_CONTAINER_NAME = 'minio';
-const DEFAULT_MINIO_IMAGE = 'bitnami/minio:2023.12.6';
+const DEFAULT_MINIO_IMAGE = 'educandu/minio:2023.12.6';
 
 export class MinioContainer extends DockerContainer {
   constructor({
