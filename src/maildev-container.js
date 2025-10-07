@@ -21,7 +21,9 @@ export class MaildevContainer extends DockerContainer {
       image,
       startupGracePeriod,
       portMappings: [`${smtpPort}:1025`, `${frontendPort}:1080`],
-      env,
+      // Setting this prevents the container healthcheck from failing
+      // see: https://github.com/maildev/maildev/issues/484#issuecomment-2166433388
+      env: { MAILDEV_IP: '::', ...env },
       netHost,
       cmd,
       onFirstRun
