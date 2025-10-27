@@ -6,6 +6,7 @@ export { esbuild } from './esbuild.js';
 export { Process } from './process.js';
 export { getEnvAsString } from './env.js';
 export { NodeProcess } from './node-process.js';
+export { compressFiles } from './compression.js';
 export { LoadBalancer } from './load-balancer.js';
 export { MongoContainer } from './mongo-container.js';
 export { MinioContainer } from './minio-container.js';
