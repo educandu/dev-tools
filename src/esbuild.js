@@ -12,7 +12,8 @@ function printWithSpaceInbetween([leftCol, rightCol], width) {
 }
 
 function formatBytes(bytes) {
-  return `${(bytes / 1000).toFixed(2)} kB`;
+  const kb = bytes / 1000;
+  return kb < 1000 ? `${kb.toFixed(2)} KB` : `${(kb / 1000).toFixed(2)} MB`;
 }
 
 function printMetafileTable(metafile) {
@@ -53,6 +54,7 @@ export const esbuild = {
   async bundle({ entryPoints, outdir, environment = process.env.NODE_ENV || 'development', minify = false, incremental = false, inject = [], metaFilePath = null, ...rest }) {
     const options = {
       entryPoints,
+      entryNames: '[name]-[hash]',
       target: ['esnext', 'chrome95', 'firefox93', 'safari13', 'edge95'],
       format: 'esm',
       bundle: true,
