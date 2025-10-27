@@ -1,9 +1,11 @@
 import Less from 'less';
 import fse from 'fs-extra';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import CleanCss from 'clean-css';
 import { promisify } from 'node:util';
 import lessPluginGlob from 'less-plugin-glob';
+import escapeStringRegexp from 'escape-string-regexp';
 import LessPluginAutoprefix from 'less-plugin-autoprefix';
 import LessPluginFixedFileImport from './less-plugin-fixed-file-import.js';
 
@@ -39,12 +41,21 @@ async function compileLess({ inputFile, outputFile, optimize }) {
     };
   }
 
+  const baseNameWithoutExtension = path.basename(inputFile, '.less');
+  const hash = crypto.createHash('md5').update(finalResult.css).digest('hex').substring(0, 8).toUpperCase();
+
+  const realOutputFile = outputFile.replace(/\[name\]/, baseNameWithoutExtension).replace(/\[hash\]/, hash);
+  const realSourceMapOutputFile = sourceMapOutputFile.replace(/\[name\]/, baseNameWithoutExtension).replace(/\[hash\]/, hash);
+  const realRelativeSourceMapUrl = relativeSourceMapUrl.replace(/\[name\]/, baseNameWithoutExtension).replace(/\[hash\]/, hash);
+
+  finalResult.css = finalResult.css.replace(new RegExp(escapeStringRegexp(relativeSourceMapUrl)), realRelativeSourceMapUrl);
+
   // Less will fail if the output dir does not exist:
   await fse.mkdirp(outputDir);
 
   await Promise.all([
-    fse.writeFile(outputFile, finalResult.css, 'utf8'),
-    fse.writeFile(sourceMapOutputFile, finalResult.map, 'utf8')
+    fse.writeFile(realOutputFile, finalResult.css, 'utf8'),
+    fse.writeFile(realSourceMapOutputFile, finalResult.map, 'utf8')
   ]);
 }
 
